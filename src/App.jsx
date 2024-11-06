@@ -5,7 +5,27 @@ import Title from "./components/Title";
 
 function App() {
   const [tasks, setTasks] = useState(
-    JSON.parse(localStorage.getItem("tasks") || [])
+    JSON.parse(localStorage.getItem("tasks")) || [
+      {
+        id: 1,
+        title: "Estudar programação",
+        description:
+          "Estudar programação para se tornar um desenvolvedor Full Stack",
+        isCompleted: false,
+      },
+      {
+        id: 2,
+        title: "Estudar Inglês",
+        description: "Estudar Assunto X",
+        isCompleted: false,
+      },
+      {
+        id: 3,
+        title: "Estudar Matemática",
+        description: "Estudar Assunto X",
+        isCompleted: false,
+      },
+    ]
   );
 
   useEffect(() => {
