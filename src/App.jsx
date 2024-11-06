@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
+import Title from "./components/Title";
 
 function App() {
   const [tasks, setTasks] = useState(
@@ -46,9 +47,7 @@ function App() {
   return (
     <div className="min-w-screen min-h-screen bg-customBg flex gap-4 justify-center p-6">
       <div className="w-[500px] flex flex-col gap-6">
-        <h1 className="font-montserrat text-3xl text-white font-bold text-center">
-          Gerenciador de Tarefas
-        </h1>
+        <Title>Gerenciador de Tarefas</Title>
         <AddTask onAddTaskSubmit={onAddTaskSubmit} />
         <Tasks
           tasks={tasks}

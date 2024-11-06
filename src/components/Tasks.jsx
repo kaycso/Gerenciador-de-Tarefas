@@ -1,14 +1,15 @@
 import { ChevronRightIcon, TrashIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import ButtonTask from "./ButtonTask";
 
 function Tasks(props) {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   function onSeeDetailsClick(task) {
-    const query = new URLSearchParams()
-    query.set("title", task.title)
-    query.set("description", task.description)
-    navigate(`/task?${query.toString()}`)
+    const query = new URLSearchParams();
+    query.set("title", task.title);
+    query.set("description", task.description);
+    navigate(`/task?${query.toString()}`);
   }
 
   return (
@@ -27,16 +28,13 @@ function Tasks(props) {
             {task.title}
           </button>
 
-          <button onClick={() => onSeeDetailsClick(task)} className="p-2 bg-customEmphasisColor text-slate-100 rounded-md">
+          <ButtonTask onClick={() => onSeeDetailsClick(task)}>
             <ChevronRightIcon />
-          </button>
+          </ButtonTask>
 
-          <button
-            onClick={() => props.onDeleteTaskClick(task.id)}
-            className="p-2 bg-customEmphasisColor text-slate-100 rounded-md"
-          >
+          <ButtonTask onClick={() => props.onDeleteTaskClick(task.id)}>
             <TrashIcon />
-          </button>
+          </ButtonTask>
         </li>
       ))}
     </ul>
