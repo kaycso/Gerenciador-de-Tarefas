@@ -26,7 +26,17 @@ function AddTask(props) {
         value={description}
         onChange={(event) => setDescription(event.target.value)}
       ></textarea>
-      <button onClick={() => props.onAddTaskSubmit(title, description)} className="py-2 bg-slate-500 rounded-md font-montserrat font-semibold text-slate-100">
+      <button
+        onClick={() => {
+          if (!title.trim() || !description.trim()) {
+            return alert("Preencha o título e a descrição da tarefa!");
+          }
+          props.onAddTaskSubmit(title, description);
+          setTitle("");
+          setDescription("");
+        }}
+        className="py-2 bg-slate-500 rounded-md font-montserrat font-semibold text-slate-100"
+      >
         ADICIONAR
       </button>
     </div>

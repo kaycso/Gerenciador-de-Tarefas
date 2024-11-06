@@ -1,6 +1,16 @@
 import { ChevronRightIcon, TrashIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 function Tasks(props) {
+  const navigate = useNavigate()
+
+  function onSeeDetailsClick(task) {
+    const query = new URLSearchParams()
+    query.set("title", task.title)
+    query.set("description", task.description)
+    navigate(`/task?${query.toString()}`)
+  }
+
   return (
     <ul className="flex flex-col gap-4 p-6 bg-customFormBg rounded-md shadow">
       <h2 className="font-montserrat font-semibold text-xl text-white">
@@ -17,7 +27,7 @@ function Tasks(props) {
             {task.title}
           </button>
 
-          <button className="p-2 bg-customEmphasisColor text-slate-100 rounded-md">
+          <button onClick={() => onSeeDetailsClick(task)} className="p-2 bg-customEmphasisColor text-slate-100 rounded-md">
             <ChevronRightIcon />
           </button>
 
